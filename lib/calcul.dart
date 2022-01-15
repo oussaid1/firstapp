@@ -151,7 +151,8 @@ Widget aculaterButton(WidgetRef ref, {String? text, String? result}) {
       ),
       child: Text(
         '$text',
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+        style: const TextStyle(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
       ),
       onPressed: () {
         switch (text) {
@@ -193,7 +194,8 @@ Widget aculaterButton(WidgetRef ref, {String? text, String? result}) {
   );
 }
 
-Widget operationButton(BuildContext context, WidgetRef ref, {String? text, String? result}) {
+Widget operationButton(BuildContext context, WidgetRef ref,
+    {String? text, String? result}) {
   return Container(
     width: 100,
     height: 50,
@@ -211,21 +213,24 @@ Widget operationButton(BuildContext context, WidgetRef ref, {String? text, Strin
       ),
       child: Text(
         '$text',
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+        style: const TextStyle(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
       ),
       onPressed: () {
         final op = ref.read(operationProvider.state).state;
         final firstN = ref.read(firstNumberProvider.state).state;
         final secondN = ref.read(secondNumberProvider.state).state;
-        String res = ref.read(resultProvider.state).state;
+        //String res = ref.read(resultProvider.state).state;
         switch (text) {
           case '+':
             ref.read(operationProvider.state).state = '+';
-            ref.read(firstNumberProvider.state).state = ref.read(resultProvider.state).state;
+            ref.read(firstNumberProvider.state).state =
+                ref.read(resultProvider.state).state;
             reset(ref);
             break;
           case '=':
-            ref.read(secondNumberProvider.state).state = ref.read(resultProvider.state).state;
+            ref.read(secondNumberProvider.state).state =
+                ref.read(resultProvider.state).state;
             switch (op) {
               case '+':
                 ref.read(resultProvider.state).state =
